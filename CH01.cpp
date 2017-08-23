@@ -21,10 +21,20 @@ short Parity(unsigned long x){
   return result;
 }
 
+short Parity2(unsigned long x){
+  short result = 0;
+  while (x){
+    result ^= 1;
+    x &= (x - 1);
+  }
+  return result;
+}
+
 int main(){
   cout << "Chapter 1: Primitive Types" << endl;
 
   cout << "CountBits(5): " << CountBits(5) << endl;
   cout << "Parity(7): " << Parity(7) << endl;
+  cout << "Parity2(7): " << Parity2(7) << endl;
   return 0;
 }
