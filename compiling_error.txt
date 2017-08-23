@@ -1,0 +1,5 @@
+C:\cygwin64\home\t-syjafr\Work\EPI\Vector_Test.cpp: In function 'int main()':
+C:\cygwin64\home\t-syjafr\Work\EPI\Vector_Test.cpp:9:38: error: in C++98 'v' must be initialized by constructor, not by '{...}'
+     std::vector<int> v = {7, 5, 16, 8};
+                                      ^
+C:\cygwin64\home\t-syjafr\Work\EPI\Vector_Test.cpp:9:38: error: could not convert '{7, 5, 16, 8}' from '<brace-enclosed initializer list>' to 'std::vector<int>'
