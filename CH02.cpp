@@ -43,8 +43,6 @@ void EvenOddTest(){
 
 int main(){
   cout << "Chapter 2: Arrays" << endl;
-
   EvenOddTest();
-
   return 0;
 }
