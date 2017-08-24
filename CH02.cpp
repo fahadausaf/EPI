@@ -18,7 +18,7 @@ void EvenOdd(vector <int>* A_ptr) {
 int main(){
   cout << "Chapter 2: Arrays";
 
-  vector<int> A (1,4,7,9,2,5,8,3);
+  //vector<int> A (1,4,7,9,2,5,8,3);
 
   return 0;
 }
