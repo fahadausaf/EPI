@@ -39,7 +39,6 @@ void EvenOddTest(){
     cout << "value of i = " << *i << endl;
     i++;
   }
-
 }
 
 int main(){
