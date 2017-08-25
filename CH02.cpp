@@ -41,6 +41,35 @@ void EvenOddTest(){
   }
 }
 
+typedef enum { RED, WHITE, BLUE } Color;
+
+void DutchFlagPartition(int pivot_index, vector<Color>* A_ptr) {
+  vector<Color>& A = *A_ptr;
+  Color pivot = A[pivot_index];
+  // First pass: group elements smaller than pivot
+  for(int i = 0; i < A.size(); ++i){
+    // Look for a smaller element.
+    for (int j = i + 1; j < A.size(); ++j){
+      if(A[j] < pivot){
+        swap(A[i], A[j]);
+        break;
+      }
+    }
+  }
+  // Second pass: group elements larger than pivot.
+  for (int i = A.size() - 1; i >= 0 && A[i] >= pivot; --i){
+    // look for a larger element. Stop when we reach an element less
+    // than pivot, since first pass has moved them to the start of A.
+    for (int j = i - 1; j >= 0 && A[j] >= pivot; --j) {
+      if (A[j] > pivot) {
+        swap(A[i], A[j]);
+        break;
+      }
+    }
+  }
+}
+
+
 int main(){
   cout << "Chapter 2: Arrays" << endl;
   EvenOddTest();
