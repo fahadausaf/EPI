@@ -29,6 +29,11 @@ void isalnum_test(){
 
 int main(){
   cout << "Tests File" << endl;
-  isalnum_test();
+  //isalnum_test();
+
+  string numStr = "123";
+  cout << "c_str: " << numStr.c_str() << endl;
+  cout << "strod: " << strtod(numStr.c_str(), 0) << endl;
+
   return 0;
 }
