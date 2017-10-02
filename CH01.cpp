@@ -7,7 +7,6 @@ short CountBits(unsigned int x){
   while (x){
     num_bits += x & 1;
     x >>= 1;
-    //cout << "x: " << x << ", num_bits: " << num_bits << endl;
   }
   return num_bits;
 }
