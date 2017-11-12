@@ -43,7 +43,7 @@ void EvenOddTest(){
 
 typedef enum { RED, WHITE, BLUE } Color;
 
-void DutchFlagPartition(int pivot_index, vector<Color>* A_ptr) {
+void DutchFlagPartition_0(int pivot_index, vector<Color>* A_ptr) {
   vector<Color>& A = *A_ptr;
   Color pivot = A[pivot_index];
   // First pass: group elements smaller than pivot
