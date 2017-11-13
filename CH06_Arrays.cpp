@@ -69,9 +69,57 @@ void DutchFlagPartition_0(int pivot_index, vector<Color>* A_ptr) {
   }
 }
 
+void DutchFlagPartition(int pivot_index, vector<Color>* A_ptr) {
+  vector<Color>& A = *A_ptr;
+  Color pivot = A[pivot_index];
+
+  int smaller = 0, equal = 0, larger = A.size();
+  while (equal < larger) {
+    if (A[equal] < pivot) {
+      swap(A[smaller++],A[equal++]);
+    }
+    else if(A[equal] == pivot){
+      ++equal;
+    }
+    else{
+      swap(A[equal], A[--larger]);
+    }
+  }
+}
+
+void DutchFlagPartitionTest(){
+  std::vector<Color> v;
+  v.push_back(RED);
+  v.push_back(WHITE);
+  v.push_back(BLUE);
+  v.push_back(BLUE);
+  v.push_back(WHITE);
+  v.push_back(BLUE);
+  v.push_back(RED);
+  v.push_back(WHITE);
+  v.push_back(RED);
+
+  vector<Color>::iterator i = v.begin();
+  while(i != v.end()){
+    cout << "value of i = " << *i << endl;
+    i++;
+  }
+
+  DutchFlagPartition(4, &v);
+
+  cout << "--------------------------" << endl;
+  vector<Color>::iterator j = v.begin();
+  while(j != v.end()){
+    cout << "value of j = " << *j << endl;
+    j++;
+  }
+
+}
+
 
 int main(){
   cout << "Chapter 2: Arrays" << endl;
-  EvenOddTest();
+  //EvenOddTest();
+  DutchFlagPartitionTest();
   return 0;
 }
