@@ -1,8 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <limits>
+#include <random>
 
 using namespace std;
+
 
 void EvenOdd(vector <int>* A_ptr) {
   vector <int>& A = *A_ptr;
@@ -126,8 +128,23 @@ void DutchFlagPartitionTest(){
 // 6.6: Buy and Sell a Stock Once
 /*******************************************************************/
 
-double BuyAndSellStockOnce(const vector<double>& prices){
+double BuyAndSellStockOnce2(const vector<double>& prices){
 
+  cout << "Start" << endl;
+
+  double min_price_so_far = numeric_limits<double>::max(), max_profit = 0;
+  for (const double& price : prices) {
+    cout << price << endl;
+    double max_profit_sell_today = price - min_price_so_far;
+    max_profit = max(max_profit, max_profit_sell_today);
+    min_price_so_far = min(min_price_so_far, price);
+  }
+
+  cout<< "End" << endl;
+  return max_profit;
+}
+
+double BuyAndSellStockOnce(const vector<double>& prices) {
   double min_price_so_far = numeric_limits<double>::max(), max_profit = 0;
   for (const double& price : prices) {
     double max_profit_sell_today = price - min_price_so_far;
@@ -137,9 +154,54 @@ double BuyAndSellStockOnce(const vector<double>& prices){
   return max_profit;
 }
 
-int main(){
+void BuyAndSellStockOnceTest(){
+  std::vector<double> v;
+  v.push_back(310);
+  v.push_back(310);
+  v.push_back(275);
+  v.push_back(275);
+  v.push_back(260);
+  v.push_back(260);
+  v.push_back(260);
+  v.push_back(230);
+  v.push_back(230);
+  v.push_back(230);
+
+  const std::vector<double> v2 = v;
+
+  cout << "BuyAndSellStockOnce()" << endl;
+
+  double d = BuyAndSellStockOnce(v);
+  cout << d << endl;
+}
+
+/*
+int main2(){
   cout << "Chapter 2: Arrays" << endl;
   //EvenOddTest();
   //DutchFlagPartitionTest();
+  BuyAndSellStockOnceTest();
+  return 0;
+}
+*/
+
+int main(int argc, char* argv[]) {
+  std::default_random_engine gen((random_device())());
+  for (int times = 0; times < 1000; ++times) {
+    int n;
+    if (argc == 2) {
+      n = atoi(argv[1]);
+    } else {
+      uniform_int_distribution<int> dis(1, 10000);
+      n = dis(gen);
+    }
+    vector<double> A;
+    uniform_real_distribution<double> dis(0, n);
+    for (int i = 0; i < n; ++i) {
+      A.emplace_back(dis(gen));
+    }
+    cout << BuyAndSellStockOnce(A) << endl;
+    assert(CheckAns(A) == BuyAndSellStockOnce(A));
+  }
   return 0;
 }

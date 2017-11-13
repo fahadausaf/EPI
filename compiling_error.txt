@@ -1,0 +1,52 @@
+In file included from /usr/include/c++/5/random:35:0,
+                 from /home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:5:
+/usr/include/c++/5/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support \
+  ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:9:12: error: ‘std::default_random_engine’ has not been declared
+ using std::default_random_engine;
+            ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:14:12: error: ‘std::random_device’ has not been declared
+ using std::random_device;
+            ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:15:12: error: ‘std::uniform_int_distribution’ has not been declared
+ using std::uniform_int_distribution;
+            ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:16:12: error: ‘std::uniform_real_distribution’ has not been declared
+ using std::uniform_real_distribution;
+            ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp: In function ‘double BuyAndSellStockOnce(const std::vector<double>&)’:
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:22:30: warning: range-based ‘for’ loops only available with -std=c++11 or -std=gnu++11
+   for (const double& price : prices) {
+                              ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp: In function ‘int main(int, char**)’:
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:43:3: error: ‘default_random_engine’ was not declared in this scope
+   default_random_engine gen((random_device())());
+   ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:49:7: error: ‘uniform_int_distribution’ was not declared in this scope
+       uniform_int_distribution<int> dis(1, 10000);
+       ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:49:32: error: expected primary-expression before ‘int’
+       uniform_int_distribution<int> dis(1, 10000);
+                                ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:50:15: error: ‘gen’ was not declared in this scope
+       n = dis(gen);
+               ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:50:18: error: ‘dis’ was not declared in this scope
+       n = dis(gen);
+                  ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:53:5: error: ‘uniform_real_distribution’ was not declared in this scope
+     uniform_real_distribution<double> dis(0, n);
+     ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:53:31: error: expected primary-expression before ‘double’
+     uniform_real_distribution<double> dis(0, n);
+                               ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:55:9: error: ‘class std::vector<double>’ has no member named ‘emplace_back’
+       A.emplace_back(dis(gen));
+         ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:55:26: error: ‘gen’ was not declared in this scope
+       A.emplace_back(dis(gen));
+                          ^
+/home/fahad/GitHub/EPI/CH06_BuyStockOnce.cpp:55:29: error: ‘dis’ was not declared in this scope
+       A.emplace_back(dis(gen));
+                             ^
