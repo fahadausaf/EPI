@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
@@ -43,6 +44,10 @@ void EvenOddTest(){
 
 typedef enum { RED, WHITE, BLUE } Color;
 
+/*******************************************************************/
+// 6.1: Dutch National Flag
+/*******************************************************************/
+
 void DutchFlagPartition_0(int pivot_index, vector<Color>* A_ptr) {
   vector<Color>& A = *A_ptr;
   Color pivot = A[pivot_index];
@@ -74,7 +79,9 @@ void DutchFlagPartition(int pivot_index, vector<Color>* A_ptr) {
   Color pivot = A[pivot_index];
 
   int smaller = 0, equal = 0, larger = A.size();
+  //cout << "Size: " << larger << endl;
   while (equal < larger) {
+    //cout << "p: " << pivot << ", e: " << equal << ", s: " << smaller << ", l: " << larger << endl;
     if (A[equal] < pivot) {
       swap(A[smaller++],A[equal++]);
     }
@@ -113,13 +120,26 @@ void DutchFlagPartitionTest(){
     cout << "value of j = " << *j << endl;
     j++;
   }
-
 }
 
+/*******************************************************************/
+// 6.6: Buy and Sell a Stock Once
+/*******************************************************************/
+
+double BuyAndSellStockOnce(const vector<double>& prices){
+
+  double min_price_so_far = numeric_limits<double>::max(), max_profit = 0;
+  for (const double& price : prices) {
+    double max_profit_sell_today = price - min_price_so_far;
+    max_profit = max(max_profit, max_profit_sell_today);
+    min_price_so_far = min(min_price_so_far, price);
+  }
+  return max_profit;
+}
 
 int main(){
   cout << "Chapter 2: Arrays" << endl;
   //EvenOddTest();
-  DutchFlagPartitionTest();
+  //DutchFlagPartitionTest();
   return 0;
 }
