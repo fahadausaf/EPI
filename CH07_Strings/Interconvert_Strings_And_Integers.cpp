@@ -8,12 +8,9 @@ string IntToString(int x){
 
   string s;
   do{
-    s += '0' + abs(x % 10);
+    s += '0' + abs(x%10);
     x /= 10;
-  } while (x);
-
-  if(is_negative)
-    s += '-';
+  } while(x);
 
   return {s.rbegin(), s.rend()};
 }
@@ -28,7 +25,7 @@ int StringToInt(const string& s){
 }
 
 int main(){
-  string s = IntToString(45);
+  string s = IntToString(459);
   cout << s << endl;
   int i = StringToInt(s);
   cout << i << endl;
